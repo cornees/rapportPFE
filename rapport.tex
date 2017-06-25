@@ -1,0 +1,81 @@
+\documentclass[a4paper, 11pt]{report}
+
+\usepackage[french]{babel} %langue, tu peux en mettre plusieurs
+\usepackage[utf8]{inputenc} % /!\ INDISPENSABLE
+\usepackage[T1]{fontenc} %sans ça pas d'accents 
+\usepackage[pdftex]{graphicx} % sert à l'insertion des images
+\usepackage{graphics}
+\usepackage{float}
+\usepackage[justification=centering]{caption}
+\usepackage{hyperref} % fait que quand tu cliqueras sur un titre dans ta 
+					% table des matière tu seras renvoyée à la page correspondante
+\usepackage{setspace} %utile pour changer les interlignes 
+\usepackage{vmargin} %changer les marges
+%\setmarginsrb{1}{2}{3}{4}{5}{6}{7}{8}
+%1 est la marge gauche
+%2 est la marge en haut
+%3 est la marge droite
+%4 est la marge en bas
+%5 fixe la hauteur de l'entête
+%6 fixe la distance entre l'entête et le texte
+%7 fixe la hauteur du pied de page
+%8 fixe la distance entre le texte et le pied de page
+\setmarginsrb{2.5cm}{1.24cm}{2.5cm}{1.24cm}{1.014cm}{0.4cm}{1cm}{0.8cm}
+
+%numérotation des sections sans chapitre, sinon tes sections seront en 0.X au lieu de X.y""
+\usepackage{tocloft}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\usepackage{url}
+
+%en-tête et pied de page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\rightmark}
+\fancyhead[C]{}
+\fancyhead[R]{Simon Cornée}
+
+%%pied de page
+%\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[R]{\includegraphics[scale=0.025]{images/logo_phelma.png}}
+\fancyfoot[c]{\textbf{page \thepage}}
+\fancyfoot[L]{\includegraphics[scale=0.2]{images/logo_solutec.png}}
+
+\begin{document} %debut de document
+\begin{spacing}{1.2} %changement interligne
+\input{title_page.tex} %ajout de la page de garde
+
+%%%% remerciements
+\newpage
+\vspace*{\stretch{5}}
+\section*{Remerciements}
+ Je souhaite tout d'abord remercier M. Basile Bertrand pour la confiance qu'il m'a donné en me confiant ce projet. De même, je tiens à remercier Mme. Marion Gramen et l'ensemble de l'équipe SOLUTEC pour leur accueil au sein du lab' et l'organisation des activités qui y sont liées.\\
+ Je remercie aussi les membres de mon groupe de travail, Loïc Champavère, Vivien Michel et Benjamin Barbesange pour leur travail d'équipe et leur coopération.
+ Enfin, je remercie l'ensemble des intervenants dans le lab', ainsi que des étudiants pour leur nombreux conseils et leur bonne humeur au quotidien. 
+\vspace*{\stretch{7}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\tableofcontents %ajout de la table des matières
+\newpage
+\listoffigures
+
+\input{introduction.tex} %%ajout des sections
+
+\input{1-entreprise_projet.tex}
+\input{2-reconstruction_piece.tex}
+
+\input{conclusion.tex}
+
+\bibliographystyle{plain}
+\bibliography{rapport}
+
+\addtocontents{toc}{\vspace{0.5 cm}}
+\addcontentsline{toc}{section}{\protect\numberline{}Bibliographie}
+
+
+\end{spacing}
+\end{document}
